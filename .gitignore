@@ -1,0 +1,43 @@
+﻿# OS
+.DS_Store
+Thumbs.db
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.cache
+*.log
+*.aps
+*.ncb
+*.opendb
+
+# Build outputs
+bin/
+obj/
+[Bb]uild/
+[Oo]ut/
+
+# SSIS/SSRS temp artifacts
+*.dtsx.layout
+*.rdl.data
+*.rptproj.user
+
+# Packages / installers
+*.msi
+*.exe
+
+# Secrets / env
+*.dtsConfig
+.env
+*.config.local
+env/*-secrets.*
+env/*-local.*
+
+# Backups and large data
+*.bak
+*.mdf
+*.ldf
+*.csv
+*.parquet
+*.zip
