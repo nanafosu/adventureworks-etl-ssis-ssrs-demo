@@ -73,4 +73,20 @@ WHERE f.SalesAmount <> CAST(f.OrderQty * f.UnitPrice AS money);
     WHERE OrderDate >= DATEADD(DAY, -7, CAST(GETDATE() AS date))
     GROUP BY OrderDate
 )
-SELECT * FROM Recent ORDER BY OrderDate DESC;
+SELECT * FROM Recent ORDER BY OrderDate DESC
+
+-- Orphan DateKeys (facts whose DateKey not in DimDate) - should be 0
+SELECT OrphanDateKeys = COUNT(*)
+FROM dw.FactSales f
+LEFT JOIN dw.DimDate d ON f.DateKey = d.DateKey
+WHERE d.DateKey IS NULL;
+
+-- Quick sample of Fact joined to DimDate
+SELECT TOP 10
+    d.FullDate, d.MonthName, d.Year,
+    SUM(f.SalesAmount) AS Sales
+FROM dw.FactSales f
+JOIN dw.DimDate d ON f.DateKey = d.DateKey
+GROUP BY d.FullDate, d.MonthName, d.Year
+ORDER BY d.FullDate DESC;
+
