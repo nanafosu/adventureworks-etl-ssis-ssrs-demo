@@ -1,0 +1,5 @@
+USE AdventureWorksDW_Custom;
+GO
+IF SCHEMA_ID('stg') IS NULL EXEC('CREATE SCHEMA stg;');
+IF SCHEMA_ID('dw')  IS NULL EXEC('CREATE SCHEMA dw;');
+GO
